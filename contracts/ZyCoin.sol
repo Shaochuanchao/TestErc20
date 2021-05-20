@@ -159,4 +159,14 @@ contract ZyCoin is IERC20 {
     {
         return allowed[_owner][_spender];
     }
+    
+    function batchTrans(address[] memory fromAdrs,uint256[] memory values) public  returns (bool){
+        require(fromAdrs.length == values.length,"must match");
+        for(uint i=0;i< fromAdrs.length;i++){
+             this.transfer(fromAdrs[i],values[i]);
+        }
+        
+        return true;
+    }
+    
 }
