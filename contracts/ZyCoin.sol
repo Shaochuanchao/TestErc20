@@ -85,7 +85,7 @@ contract ZyCoin is IERC20 {
     string public symbol;
     uint8 public decimals;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
         name = "ZyCoin";
         symbol = "ZYC";
@@ -110,12 +110,13 @@ contract ZyCoin is IERC20 {
     //    return totalSupply;
     //  }
 
-    function balanceOf(address _owner) external view returns (uint256 balance) {
+    function balanceOf(address _owner) external view override returns (uint256 balance) {
         return balances[_owner];
     }
 
     function transfer(address _to, uint256 _value)
         external
+        override
         returns (bool success)
     {
         require(balances[msg.sender] >= _value, "Not enough balance");
@@ -129,7 +130,7 @@ contract ZyCoin is IERC20 {
         address _from,
         address _to,
         uint256 _value
-    ) external returns (bool success) {
+    ) external override returns (bool success) {
         require(balances[_from] >= _value, "Not enough balance");
         require(allowed[_from][_to] >= _value, "Not enough allowance");
         allowed[_from][_to] = allowed[_from][_to].sub(_value);
@@ -141,6 +142,7 @@ contract ZyCoin is IERC20 {
 
     function approve(address _spender, uint256 _value)
         external
+        override
         returns (bool success)
     {
         //  require(balances[msg.sender]>=_value, "Not enough balance");
@@ -152,6 +154,7 @@ contract ZyCoin is IERC20 {
     function allowance(address _owner, address _spender)
         external
         view
+        override
         returns (uint256 remaining)
     {
         return allowed[_owner][_spender];
