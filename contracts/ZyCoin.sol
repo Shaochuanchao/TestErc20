@@ -89,8 +89,8 @@ contract ZyCoin is IERC20 {
         owner = msg.sender;
         name = "ZyCoin";
         symbol = "ZYC";
-        decimals = 18;
-        totalSupply = 4 * 10**27;
+        decimals = 1;
+        totalSupply = 10000;
         balances[owner] = totalSupply;
     }
 
@@ -115,16 +115,19 @@ contract ZyCoin is IERC20 {
     }
 
     function transfer(address _to, uint256 _value)
-        external
+        public
         override
         returns (bool success)
     {
         require(balances[msg.sender] >= _value, "Not enough balance");
+        require(msg.sender!=_to,"What's wrong with you?");
         balances[msg.sender] = balances[msg.sender].sub(_value);
         balances[_to] = balances[_to].add(_value);
         emit Transfer(msg.sender, _to, _value);
         return true;
     }
+    
+    
 
     function transferFrom(
         address _from,
@@ -160,13 +163,14 @@ contract ZyCoin is IERC20 {
         return allowed[_owner][_spender];
     }
     
-    function batchTrans(address[] memory fromAdrs,uint256[] memory values) public  returns (bool){
-        require(fromAdrs.length == values.length,"must match");
-        for(uint i=0;i< fromAdrs.length;i++){
-             this.transfer(fromAdrs[i],values[i]);
+    function batchTrans(address[] memory toAdrs,uint256[] memory values) public  returns (bool){
+        require(toAdrs.length == values.length,"must match");
+        for(uint i=0;i< toAdrs.length;i++){
+             transfer(toAdrs[i],values[i]);
         }
-        
-        return true;
+      
+      return true;
     }
     
+
 }
