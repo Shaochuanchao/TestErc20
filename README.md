@@ -2,11 +2,14 @@
 
 ## 开发环境
 
-|Tools|Version|
-|:--|:--|
-|remix | 1.1.0|
-|solidity | 0.8.1|
+--| --
+remix | 1.1.0
+solidity | 0.8.1
 
 ### ZyCoin.sol
 
-Erc20标准代币，基础上加了一个批量转账功能 batchTransfer
+erc20代币，增加批量
+
+### BatchErc20
+
+批量转erc20代币的合约

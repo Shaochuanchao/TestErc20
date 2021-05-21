@@ -135,9 +135,9 @@ contract ZyCoin is IERC20 {
         uint256 _value
     ) external override returns (bool success) {
         require(balances[_from] >= _value, "Not enough balance");
-        require(allowed[_from][_to] >= _value, "Not enough allowance");
-        allowed[_from][_to] = allowed[_from][_to].sub(_value);
-        balances[msg.sender] = balances[msg.sender].sub(_value);
+        require(allowed[_from][msg.sender] >= _value, "Not enough allowance");
+        allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value);
+        balances[_from] = balances[_from].sub(_value);
         balances[_to] = balances[_to].add(_value);
         emit Transfer(_from, _to, _value);
         return true;
