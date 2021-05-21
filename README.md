@@ -2,7 +2,8 @@
 
 ## 开发环境
 
-|--| --|
+|Tools|Version|
+|:--|:--|
 |remix | 1.1.0|
 |solidity | 0.8.1|
 
