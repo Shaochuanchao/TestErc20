@@ -2,7 +2,10 @@
 
 ## 开发环境
 
-Truffle v5.3.6 (core: 5.3.6)
-Solidity v0.5.16 (solc-js)
-Node v12.18.3
-Web3.js v1.3.5
+--| --
+remix | 1.1.0
+solidity | 0.8.1
+
+### ZyCoin.sol
+
+Erc20标准代币，基础上加了一个批量转账功能 batchTransfer
