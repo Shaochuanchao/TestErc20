@@ -2,9 +2,10 @@
 
 ## 开发环境
 
---| --
-remix | 1.1.0
-solidity | 0.8.1
+|工具| 版本|
+|:--|:--|
+|remix | 1.1.0|
+|solidity | 0.8.1|
 
 ### ZyCoin.sol
 
