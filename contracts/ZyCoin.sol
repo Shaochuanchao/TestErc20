@@ -89,7 +89,7 @@ contract ZyCoin is IERC20 {
         owner = msg.sender;
         name = "ZyCoin";
         symbol = "ZYC";
-        decimals = 1;
+        decimals = 18;
         totalSupply = 10000;
         balances[owner] = totalSupply;
     }
